@@ -1,1 +1,1 @@
-# aws-s3-backend-example
+Just a small example how AWS S3 can be used as storage. Don't forget to adjust the application.properties first ;)
