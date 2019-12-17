@@ -38,4 +38,5 @@ public class MyController {
 		redirectAttributes.addFlashAttribute("message", message);
 		return "redirect:/";
 	}
+
 }

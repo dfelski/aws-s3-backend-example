@@ -1,0 +1,29 @@
+version: '3.4'
+
+services:
+
+  app:
+    build: .
+    ports:
+      - 8080:8080
+    environment:
+      - spring.profiles.active=DEV
+      - example.bucketName=test
+      - example.region=us-east-1
+      - example.accessKeyId=dummy
+      - example.secretAccessKey=dummy
+
+  localstack:
+    image: localstack/localstack
+    ports:
+      - "4567-4584:4567-4584"
+      - "9090:9090"
+    environment:
+      - PORT_WEB_UI=9090
+      - DEFAULT_REGION=us-east-1
+      - SERVICES=s3
+      - USE_SSL=false
+      - DATA_DIR=/tmp/localstack
+      - DOCKER_HOST=unix:///var/run/docker.sock
+    volumes:
+      - "/tmp/localstack:/tmp/localstack"
